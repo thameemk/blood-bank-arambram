@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 25, 2021 at 08:15 PM
+-- Generation Time: Jun 26, 2021 at 01:40 AM
 -- Server version: 8.0.25-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -50,11 +50,13 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(15) NOT NULL,
+  `password` varchar(1000) NOT NULL,
   `phone_2` varchar(15) NOT NULL,
   `blood_group` varchar(10) NOT NULL,
   `pin_code` int NOT NULL,
   `home_address` varchar(500) NOT NULL,
-  `profile_pic` int NOT NULL
+  `profile_pic` int NOT NULL,
+  `is_profile_complete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
