@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Helmet } from 'react-helmet';
 
 function Copyright() {
   return (
@@ -52,6 +53,9 @@ export default function Register() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      <Helmet>
+        <title>Register | Blood Bank Arambram</title>
+      </Helmet>
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
