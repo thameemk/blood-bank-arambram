@@ -7,13 +7,13 @@ import {
 } from "react-router-dom";
 // import Home from './home';
 import Login from './Login';
-import Signup from './Signup';
+import Register from './Register';
 const Pages = () => {
     return(
         <Router>
             <Route exact path="/" component= {Login} />
             <Route path = "/login" component = {Login} />
-            <Route path = "/signup" component = {Signup} />
+            <Route path = "/register" component = {Register} />
         </Router>
     );
 };
