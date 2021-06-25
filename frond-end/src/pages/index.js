@@ -5,15 +5,20 @@ import {
   Route,
   Link
 } from "react-router-dom";
-// import Home from './home';
+import completeProfile from './user/completeProfile';
 import Login from './Login';
 import Register from './Register';
+import NotFound from './NotFound';
 const Pages = () => {
     return(
         <Router>
+            <Switch>           
             <Route exact path="/" component= {Login} />
             <Route path = "/login" component = {Login} />
             <Route path = "/register" component = {Register} />
+            <Route path = "/user/complete-profile" component = {completeProfile} /> 
+            <Route path="" component={NotFound} />
+            </Switch>                      
         </Router>
     );
 };
