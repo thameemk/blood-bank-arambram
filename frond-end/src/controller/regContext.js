@@ -9,7 +9,10 @@ const Axios = axios.create({
 
 class RegisterAPI extends Component{
 
-               
+    constructor(){
+        super();
+    }
+                 
     registerUser = async (user) => {
 
         // Sending the user registration request

@@ -38,9 +38,7 @@ const useStyles = makeStyles((theme) => ({
 function Register() {
     
 
-    const classes = useStyles();   
-
-    const registerUser = useContext(regContext);
+    const classes = useStyles();       
 
     const initialState = {
         userInfo:{
@@ -51,6 +49,8 @@ function Register() {
         errorMsg:'',
         successMsg:'',
     }
+
+    const registerUser = useContext(regContext);
 
     const [state,setState] = useState(initialState);
 
@@ -70,6 +70,17 @@ function Register() {
                 errorMsg:data.message
             });
         }
+    }
+
+    // On change the Input Value (name, email, password)
+    const onChangeValue = (e) => {
+        setState({
+            ...state,
+            userInfo:{
+                ...state.userInfo,
+                [e.target.name]:e.target.value
+            }
+        });
     }
 
     // Show Message on Error or Success
