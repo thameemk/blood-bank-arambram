@@ -55,8 +55,9 @@ function Register() {
     const [state,setState] = useState(initialState);
 
     const submitForm = async (event) => {
-        event.preventDefault();
+        event.preventDefault();        
         const data = await registerUser(state.userInfo);
+        console.log(data);
         if(data.success){
             setState({
                 ...initialState,
