@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Helmet } from 'react-helmet';
 import Copyright from './elements/copyright';
-import {regContext} from '../controller/regContext';
+import {regContext} from '../contexts/regContext';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -50,14 +50,17 @@ function Register() {
         successMsg:'',
     }
 
-    const registerUser = useContext(regContext);
+
+    const register = useContext(regContext);
 
     const [state,setState] = useState(initialState);
 
+    console.log(typeof register(state.userInfo)); 
+
     const submitForm = async (event) => {
-        event.preventDefault();        
-        const data = await registerUser(state.userInfo);
-        console.log(data);
+        
+        event.preventDefault();               
+        const data = await register(state.userInfo);        
         if(data.success){
             setState({
                 ...initialState,
@@ -112,13 +115,13 @@ function Register() {
                 <form className={classes.form} onSubmit={submitForm}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <TextField autoComplete="name" name="name" variant="outlined" required fullWidth id="name" label="Full Name" autoFocus />
+                            <TextField onChange={onChangeValue} autoComplete="name" name="name" variant="outlined" required fullWidth id="name" label="Full Name" autoFocus />
                         </Grid>            
                         <Grid item xs={12}>
-                            <TextField variant="outlined" required fullWidth id="phone" label="Phone Number" name="phone"/>
+                            <TextField onChange={onChangeValue} variant="outlined" required fullWidth id="phone" label="Phone Number" name="phone"/>
                         </Grid>
                         <Grid item xs={12}>
-                            <TextField variant="outlined" required fullWidth name="password" label="Password" type="password" id="password" autoComplete="current-password"/>
+                            <TextField onChange={onChangeValue} variant="outlined" required fullWidth name="password" label="Password" type="password" id="password" autoComplete="current-password"/>
                         </Grid>            
                     </Grid>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>

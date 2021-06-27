@@ -7,12 +7,8 @@ const Axios = axios.create({
     baseURL: 'http://localhost/blood-bank-arambram/back-end/',
 });
 
-class RegisterAPI extends Component{
-
-    constructor(){
-        super();
-    }
-                 
+export default class RegisterAPI extends Component{
+                     
     registerUser = async (user) => {
 
         // Sending the user registration request
@@ -38,5 +34,4 @@ class RegisterAPI extends Component{
 
 }
 
-export default RegisterAPI;
 
