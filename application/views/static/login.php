@@ -11,13 +11,13 @@
     <div class="container">
         <div style="justify-content: center;" class="row">
             <?php if (!$this->session->userdata('sess_logged_in') == 1) { ?>
-                <a class="btn btn-icon-holder btn-shadow btn-light-hover btn-light-hover" href="<?php $authURL ?>">
-                    Login with Facebook<i class="fab fa-facebook-f"></i>
-                </a>
+                <div class="btn btn-icon-holder btn-shadow btn-light-hover btn-light-hover">
+                    <a class="text-white" href="<?php echo $authURL ?>">Login with Facebook<i class="fab fa-facebook-f"></i></a>
+                </div>
             <?php } else { ?>
-                <a class="btn btn-icon-holder btn-shadow btn-light-hover btn-light-hover" href="<?php $authURL ?>">
-                    Continue to your profile <i class="icon-home"> </i>
-                </a>
+                <div class="btn btn-icon-holder btn-shadow btn-light-hover btn-light-hover">
+                    <a class="text-white" href="<?php echo base_url() ?>user/profile?>">Continue to your profile <i class="icon-home"> </i></a>
+                </div>
             <?php } ?>
         </div>
     </div>
