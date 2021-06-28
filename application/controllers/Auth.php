@@ -41,6 +41,11 @@ class Auth extends CI_Controller
 
     public function logout()
     {
+        $this->session->sess_destroy();
+        $session_data = array(
+            'sess_logged_in' => 0
+        );
+        $this->session->set_userdata($session_data);
         // Remove local Facebook session 
         $this->facebook->destroy_session();
         // Remove user data from session 

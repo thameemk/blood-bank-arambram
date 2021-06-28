@@ -2,18 +2,7 @@
 <section id="page-title" data-bg-parallax="<?= base_url() ?>assets/images/login_banner.jpeg">
     <div class="container">
         <div class="page-title">
-            <h1 style="color: #3b22fc;"><b>User login</b></h1>
-            <span style="color: #3b22fc;"><b>User login page</b></span>
-        </div>
-        <div class="breadcrumb">
-            <ul>
-                <li><a style="color: #3b22fc;" href="<?= base_url() ?>"><b>Home</b></a>
-                </li>
-                <li><a style="color: #3b22fc;" href="#"><b>Pages</b></a>
-                </li>
-                <li class="active"><a style="color: #3b22fc;" href="<?= base_url() ?>login"><b>User login</b></a>
-                </li>
-            </ul>
+            <h1 style="color: #2264fc;"><b>User login</b></h1>
         </div>
     </div>
 </section>
