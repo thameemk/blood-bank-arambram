@@ -18,7 +18,7 @@
                         <p class="text-muted">Please complete your basic information. It is mandatory to become a donor in Blood Donors Arambram Group</p>
                     </div>
                     <div class="card-body">
-                        <form id="form1" class="form-validate">
+                        <form id="form1" action="<?=base_url()?>user/complete" class="form-validate">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="username">Full Name</label>
