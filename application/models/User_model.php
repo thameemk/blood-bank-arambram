@@ -28,4 +28,16 @@ class User_model extends CI_Model
         }
         return FALSE;
     }
+
+    function is_profile_complete($email)
+    {
+        $email = $this->security->xss_clean($email);
+        $this->db->where('email', $email);
+        $this->db->where('is_profile_complete', 1);
+        $query = $this->db->get('users');
+        if ($query->num_rows() == 1) {
+            return TRUE;
+        }
+        return FALSE;
+    }
 }

@@ -35,6 +35,14 @@ class User extends CI_Controller
 
     function complete()
     {
-        echo "complete profile";
+        if ($this->user_model->is_profile_complete($this->session->email) == TRUE) {
+            $this->session->set_flashdata('success', 'Login successful !');
+            redirect(base_url('user/profile'));
+        } else {
+            $data['page_title'] = 'Complete profile';
+            $this->load->view('template/header', $data);
+            $this->load->view('user/complete', $data);
+            $this->load->view('template/footer');
+        }
     }
 }
