@@ -18,7 +18,7 @@
                         <p class="text-muted">Please complete your basic information. It is mandatory to become a donor in Blood Donors Arambram Group</p>
                     </div>
                     <div class="card-body">
-                        <form id="form1" action="<?=base_url()?>user/complete" class="form-validate">
+                        <form id="form1" action="<?= base_url() ?>user/complete_profile" method="post" class="form-validate">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="username">Full Name</label>
@@ -72,21 +72,13 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="address">Address</label>
-                                    <input type="text" class="form-control" name="address" placeholder="Enter your Street Address" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="address2">Address 2</label>
-                                    <input type="text" class="form-control" name="address2" placeholder="Enter your Apartment, studio, or floor" required>
+                                    <textarea type="text" class="form-control" name="home_address" placeholder="Enter your Home Address" required></textarea>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="city">City</label>
-                                    <input type="text" class="form-control" name="city" placeholder="Enter your City" required>
-                                </div>
-                                <div class="form-group col-md-6">
                                     <label>Pin Code:</label>
-                                    <input type="number" class="form-control" name="zip" placeholder="Enter Pin Code" required>
+                                    <input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" required>
                                 </div>
                             </div>
                             <div class="form-row">
