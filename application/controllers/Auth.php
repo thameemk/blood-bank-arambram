@@ -46,6 +46,6 @@ class Auth extends CI_Controller
         // Remove user data from session 
         $this->session->unset_userdata('userData');
         // Redirect to login page 
-        redirect('login');
+        redirect(base_url('login'));
     }
 }

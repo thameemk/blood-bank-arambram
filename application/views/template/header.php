@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="<?= base_url() ?>assets/images/logo.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
-    <title><?= $page_title ?> | ആരാമ്പ്രത്തുകാർ</title>
+    <title><?= $page_title ?> | Blood Donors Arambram</title>
     <!-- Stylesheets & Fonts -->
     <link href="<?= base_url() ?>assets/css/plugins.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
@@ -55,6 +55,12 @@
                             <nav>
                                 <ul>
                                     <li><a href="<?= base_url() ?>">Home</a></li>
+                                    <?php if (!$this->session->userdata('sess_logged_in') == 1) { ?>
+                                        <li><a href="<?= base_url() ?>login">Login</a></li>
+                                    <?php } else { ?>
+                                        <li><a href="<?= base_url() ?>user/profile">MY PROFILE</a></li>
+                                        <li><a href="<?= base_url() ?>auth/logout">LOGOUT</a></li>
+                                    <?php } ?>
                                 </ul>
                             </nav>
                         </div>
