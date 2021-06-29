@@ -22,7 +22,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="username">Full Name</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Enter username" required>
+                                    <input type="text" class="form-control" name="name" placeholder="Enter fullname" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">Email address</label>

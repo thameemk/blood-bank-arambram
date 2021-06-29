@@ -50,16 +50,16 @@
                     </div>
                     <!--end: Navigation Resposnive Trigger-->
                     <!--Navigation-->
-                    <div id="mainMenu">
+                    <div id="mainMenu" class="menu-lines">
                         <div class="container">
                             <nav>
                                 <ul>
-                                    <li><a href="<?= base_url() ?>">Home</a></li>
+                                    <li class="current"><a href="<?= base_url() ?>">Home</a></li>
                                     <?php if (!$this->session->userdata('sess_logged_in') == 1) { ?>
-                                        <li><a href="<?= base_url() ?>login">Login</a></li>
+                                        <li class="current"><a href="<?= base_url() ?>login">Login</a></li>
                                     <?php } else { ?>
-                                        <li><a href="<?= base_url() ?>user/profile">MY PROFILE</a></li>
-                                        <li><a href="<?= base_url() ?>auth/logout">LOGOUT</a></li>
+                                        <li class="current"><a href="<?= base_url() ?>user/profile">MY PROFILE</a></li>
+                                        <li class="current"><a href="<?= base_url() ?>auth/logout">LOGOUT</a></li>
                                     <?php } ?>
                                 </ul>
                             </nav>
