@@ -40,4 +40,38 @@ class User_model extends CI_Model
         }
         return FALSE;
     }
+
+    function complete_profile()
+    {
+        $data = $this->input->post();
+        $data = $this->security->xss_clean($data);
+        $this->form_validation->set_rules('name', 'name', 'required');
+        $this->form_validation->set_rules('gender', 'gender', 'required');
+        $this->form_validation->set_rules('dob', 'dob', 'required');
+        $this->form_validation->set_rules('phone', 'phone', 'required');
+        $this->form_validation->set_rules('blood_group', 'blood_group', 'required');
+        $this->form_validation->set_rules('pin_code', 'pin_code', 'required');
+        $this->form_validation->set_rules('home_address', 'home_address', 'required');
+        $this->form_validation->set_rules('terms_conditions', 'terms_conditions', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            return false;
+        } else {
+            $user = array(
+                'name' => $this->input->post('name'),
+                'gender' => $this->input->post('gender'),
+                'dob' => $this->input->post('dob'),
+                'phone' => $this->input->post('phone'),
+                'phone' => $this->input->post('phone'),
+                'blood_group' => $this->input->post('blood_group'),
+                'pin_code' => $this->input->post('pin_code'),
+                'home_address' => $this->input->post('home_address'),
+            );
+            $this->db->where('email', $this->session->email);
+            $this->db->update('users', $user);
+            if ($this->db->affected_rows() == 1) {
+                return true;
+            }
+            return false;
+        }
+    }
 }

@@ -10,6 +10,16 @@
 
 <section id="page-content">
     <div class="container">
+        <?php if ($this->session->flashdata('fail')) : ?>
+            <div class="alert alert-danger" role="alert">
+                <center><?php echo $this->session->flashdata('fail'); ?></center>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('success')) : ?>
+            <div class="alert alert-success" role="alert">
+                <center><?php echo $this->session->flashdata('success'); ?></center>
+            </div>
+        <?php endif; ?>
         <div style="justify-content: center;" class="row">
             <div class="content col-lg-9">
                 <div class="card">
@@ -22,7 +32,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="username">Full Name</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Enter fullname" required>
+                                    <input type="text" class="form-control" name="name" placeholder="Enter fullname">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">Email address</label>
@@ -70,7 +80,7 @@
                             </div>
                             <div class="h5 mb-4">Address</div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     <label for="address">Address</label>
                                     <textarea type="text" class="form-control" name="home_address" placeholder="Enter your Home Address" required></textarea>
                                 </div>
@@ -79,20 +89,6 @@
                                 <div class="form-group col-md-6">
                                     <label>Pin Code:</label>
                                     <input type="number" class="form-control" name="pin_code" placeholder="Enter Pin Code" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="state">State</label>
-                                    <select name="state" class="form-control" required>
-                                        <option value="">Kerala</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="country">Country</label>
-                                    <select name="country" class="form-control" required>
-                                        <option value="">INDIA</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

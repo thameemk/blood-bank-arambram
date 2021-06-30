@@ -48,6 +48,14 @@ class User extends CI_Controller
 
     function complete_profile()
     {
+        $status = $this->user_model->complete_profile();
+        if ($status == true) {
+            $this->session->set_flashdata('success', 'Successfully completed your profile !');
+            redirect(base_url('user/profile'));
+        } else {
+            $this->session->set_flashdata('fail', 'Please fill all required fields !');
+            redirect(base_url('user/complete'));
+        }
     }
 
     public function user_pages($page)

@@ -9,6 +9,16 @@
 <!-- end: Page title -->
 <section>
     <div class="container">
+        <?php if ($this->session->flashdata('fail')) : ?>
+            <div class="alert alert-danger" role="alert">
+                <center><?php echo $this->session->flashdata('fail'); ?></center>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('success')) : ?>
+            <div class="alert alert-success" role="alert">
+                <center><?php echo $this->session->flashdata('success'); ?></center>
+            </div>
+        <?php endif; ?>
         <div style="justify-content: center;" class="row">
             <?php if (!$this->session->userdata('sess_logged_in') == 1) { ?>
                 <div class="btn btn-icon-holder btn-shadow btn-light-hover btn-light-hover">
