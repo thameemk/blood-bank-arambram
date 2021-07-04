@@ -37,14 +37,14 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <?php if ($this->session->user_type == 'admin') { ?>
-                    <h4 class="mt-4 text-white"><b>Blood Donors <i>Admin</i></b></h4>
+                    <span class="navbar-brand text-white"><b>Blood Donors <i>Admin</i></b></span>
                 <?php } else { ?>
-                    <h4 class="mt-4 text-white"><b>Blood Donors <i>User</i></b></h4>
+                    <span class="navbar-brand text-white"><b>Blood Donors - <i>User</i></b></span>
                 <?php } ?>
 
             </div>
 
-            <div id="main-menu" class="mt-3 main-menu collapse navbar-collapse">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="<?= base_url() ?>user/home"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
