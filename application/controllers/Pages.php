@@ -16,22 +16,14 @@ class Pages extends CI_Controller
 	{
 		$data['page_title'] = 'Login';
 		$data['authURL'] =  $this->facebook->login_url();
-		$this->load->view('template/header', $data);
 		$this->load->view('static/login', $data);
-		$this->load->view('template/footer');
 	}
 
-	function view($page)
+	function signup()
 	{
-		if (!file_exists(APPPATH . 'views/static/' . $page . '.php')) {
-			show_404();
-		}
-		$temp = str_replace("-", " ", $page);
-		$temp1 = ucfirst($temp);
-		$data['page_title'] = $temp1;
+		$data['page_title'] = 'Sign Up';
 		$data['authURL'] =  $this->facebook->login_url();
-		$this->load->view('template/header', $data);
-		$this->load->view('static/' . $page, $data);
-		$this->load->view('template/footer');
+		$this->load->view('static/signup', $data);
 	}
+
 }

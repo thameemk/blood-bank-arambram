@@ -1,34 +1,95 @@
-<!-- Page title -->
-<section id="page-title" data-bg-parallax="<?= base_url() ?>assets/images/login_banner.jpeg">
-    <div class="container">
-        <div class="page-title">
-            <h1 style="color: #2264fc;"><b>User login</b></h1>
+<!doctype html>
+
+<html class="no-js" lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?= $page_title ?> | Blood Donors Arambram</title>
+    <meta name="description" content="The official website of Blood Donors Arambram">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="#">
+    <link rel="shortcut icon" href="#">
+
+
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/selectFX/css/cs-skin-elastic.css">
+
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+
+<body class="bg-dark">
+
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="<?= base_url() ?>">
+                        <h2 class="text-white"><b><i>Blood Donors Arambram</i></b></h2>
+                    </a>
+                </div>
+                <div class="login-form">
+                    <?php if ($this->session->flashdata('fail')) : ?>
+                        <div class="alert alert-danger" role="alert">
+                            <center><?php echo $this->session->flashdata('fail'); ?></center>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($this->session->flashdata('success')) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <center><?php echo $this->session->flashdata('success'); ?></center>
+                        </div>
+                    <?php endif; ?>
+                    <form>
+                        <div class="form-group">
+                            <label style="text-transform:inherit">Email address</label>
+                            <input type="email" class="form-control" placeholder="Email" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label style="text-transform:inherit">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" disabled>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input disabled type="checkbox"> Remember Me
+                            </label>
+                            <label class="pull-right">
+                                <a href="#">Forgotten Password?</a>
+                            </label>
+
+                        </div>
+                        <button disabled type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        <div class="social-login-content">
+                            <div class="social-button">
+                                <a href="<?php echo $authURL ?>" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</a>
+                            </div>
+                        </div>
+                        <div class="register-link m-t-15 text-center">
+                            <p>Don't have account ? <a href="<?=base_url()?>signup"> Sign Up Here</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</section>
-<!-- end: Page title -->
-<section>
-    <div class="container">
-        <?php if ($this->session->flashdata('fail')) : ?>
-            <div class="alert alert-danger" role="alert">
-                <center><?php echo $this->session->flashdata('fail'); ?></center>
-            </div>
-        <?php endif; ?>
-        <?php if ($this->session->flashdata('success')) : ?>
-            <div class="alert alert-success" role="alert">
-                <center><?php echo $this->session->flashdata('success'); ?></center>
-            </div>
-        <?php endif; ?>
-        <div style="justify-content: center;" class="row">
-            <?php if (!$this->session->userdata('sess_logged_in') == 1) { ?>
-                <div class="btn btn-icon-holder btn-shadow btn-light-hover btn-light-hover">
-                    <a class="text-white" href="<?php echo $authURL ?>">Login with Facebook<i class="fab fa-facebook-f"></i></a>
-                </div>
-            <?php } else { ?>
-                <div class="btn btn-icon-holder btn-shadow btn-light-hover btn-light-hover">
-                    <a class="text-white" href="<?php echo base_url() ?>user/profile?>">Continue to your profile <i class="icon-home"> </i></a>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
-</section>
+
+
+    <script src="<?= base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="<?= base_url() ?>assets/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="<?= base_url() ?>assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/main.js"></script>
+
+
+</body>
+
+</html>
