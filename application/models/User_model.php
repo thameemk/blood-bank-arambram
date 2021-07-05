@@ -141,7 +141,15 @@ class User_model extends CI_Model
         $user_id = $this->get_user_id($this->session->email);
         $this->db->where('user_id', $user_id);
         $query = $this->db->get('report');
-        // $data = $query->result_array();
         return $query->result();
+    }
+
+    function get_total_blood_donations()
+    {
+        $user_id = $this->get_user_id($this->session->email);
+        $this->db->where('user_id', $user_id);
+        $query = $this->db->get('report');
+        $rowcount = $query->num_rows();
+        return $rowcount;
     }
 }

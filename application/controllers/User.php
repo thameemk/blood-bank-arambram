@@ -32,6 +32,7 @@ class User extends CI_Controller
         $data['page'] = $page;
         $data['authURL'] =  $this->facebook->login_url();
         $data['donationReports'] = $this->user_model->get_all_blood_donations();
+        $data['totalDonations'] = $this->user_model->get_total_blood_donations();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/user/' . $page, $data);

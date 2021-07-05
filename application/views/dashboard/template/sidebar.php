@@ -57,7 +57,7 @@
                         <a href="<?= base_url() ?>user/report-blood-donation"> <i class="menu-icon fa fa-laptop"></i>Report Blood Donation</a>
                     </li>
                     <li>
-                        <a href="<?= base_url() ?>user/my-blood-donations"> <i class="menu-icon fa fa-laptop"></i>My Blood Donations </a>
+                        <a href="<?= base_url() ?>user/my-blood-donations"> <i class="menu-icon fa fa-table"></i>My Blood Donations </a>
                     </li>
 
                     <?php if ($this->session->user_type == 'admin') { ?>
