@@ -83,7 +83,8 @@ class User_model extends CI_Model
         $this->form_validation->set_rules('donated_date', 'donated_date', 'required');
         $this->form_validation->set_rules('donated_place', 'donated_place', 'required');
         if ($this->form_validation->run() == FALSE) {
-            return false;
+            $response['status'] = false;
+            $response['message'] = 'Form Validation Error';
         } else {
             $user_id = $this->get_user_id($this->session->email);
             $data = array(
@@ -91,12 +92,21 @@ class User_model extends CI_Model
                 'donated_date' => $this->input->post('donated_date'),
                 'donated_place' => $this->input->post('donated_place'),
             );
-            $this->db->insert('report', $data);
-            if ($this->db->affected_rows() == 1) {
-                return true;
+            if ($this->check_duplicate_same_day_donation($user_id, $data['donated_date']) == TRUE) {
+                $response['status'] = false;
+                $response['message'] = 'Duplicate Entry Found';
+            } else {
+                $this->db->insert('report', $data);
+                if ($this->db->affected_rows() == 1) {
+                    $response['status'] = true;
+                    $response['message'] = 'Successfully Added';
+                } else {
+                    $response['status'] = false;
+                    $response['message'] = 'Error Not Defined';
+                }
             }
-            return false;
         }
+        return $response;
     }
 
     function get_user_id($email)
@@ -111,5 +121,27 @@ class User_model extends CI_Model
         } else {
             return false;
         }
+    }
+
+    function check_duplicate_same_day_donation($user_id, $date)
+    {
+        $this->db->where('user_id', $user_id);
+        $this->db->where('donated_date', $date);
+        $query = $this->db->get('report');
+        $data = $query->result_array();
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function get_all_blood_donations()
+    {
+        $user_id = $this->get_user_id($this->session->email);
+        $this->db->where('user_id', $user_id);
+        $query = $this->db->get('report');
+        // $data = $query->result_array();
+        return $query->result();
     }
 }

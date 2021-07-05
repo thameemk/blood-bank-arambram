@@ -29,7 +29,9 @@ class User extends CI_Controller
         $temp = str_replace("-", " ", $page);
         $temp1 = ucfirst($temp);
         $data['page_title'] = $temp1;
+        $data['page'] = $page;
         $data['authURL'] =  $this->facebook->login_url();
+        $data['donationReports'] = $this->user_model->get_all_blood_donations();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/user/' . $page, $data);
@@ -38,11 +40,11 @@ class User extends CI_Controller
 
     public function report_blood_donation()
     {
-        $status = $this->user_model->report_blood_donation();
-        if ($status == true) {
-            $this->session->set_flashdata('success', 'Successfully added !');
+        $response = $this->user_model->report_blood_donation();
+        if ($response['status'] == true) {
+            $this->session->set_flashdata('success', $response['message']);
         } else {
-            $this->session->set_flashdata('fail', 'Please fill all required fields !');
+            $this->session->set_flashdata('fail', $response['message']);
         }
         redirect(base_url('user/report-blood-donation'));
     }
