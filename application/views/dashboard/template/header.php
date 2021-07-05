@@ -82,7 +82,7 @@
          <?php if ($this->session->flashdata('fail')) : ?>
              <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
                  <span class="badge badge-pill badge-danger">Error</span>
-                 <?php echo $this->session->flashdata('success'); ?>
+                 <?php echo $this->session->flashdata('fail'); ?>
                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                      <span aria-hidden="true">×</span>
                  </button>
@@ -91,7 +91,7 @@
          <?php if ($this->session->flashdata('success')) : ?>
              <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                  <span class="badge badge-pill badge-success">Success</span>
-                 <?php echo $this->session->flashdata('fail'); ?>
+                 <?php echo $this->session->flashdata('success'); ?>
                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                      <span aria-hidden="true">×</span>
                  </button>
