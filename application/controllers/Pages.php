@@ -14,9 +14,13 @@ class Pages extends CI_Controller
 
 	function login()
 	{
-		$data['page_title'] = 'Login';
-		$data['authURL'] =  $this->facebook->login_url();
-		$this->load->view('static/login', $data);
+		if ($this->session->userdata('sess_logged_in') == 1) {
+			redirect(base_url('user/home'));
+		} else {
+			$data['page_title'] = 'Login';
+			$data['authURL'] =  $this->facebook->login_url();
+			$this->load->view('static/login', $data);
+		}
 	}
 
 	function signup()
@@ -25,5 +29,4 @@ class Pages extends CI_Controller
 		$data['authURL'] =  $this->facebook->login_url();
 		$this->load->view('static/signup', $data);
 	}
-
 }

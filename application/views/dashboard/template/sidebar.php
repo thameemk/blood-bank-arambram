@@ -48,6 +48,9 @@
                     </li>
 
                     <h3 class="menu-title">USER TOOLS</h3>
+                    <li>
+                        <a href="<?= base_url() ?>user/report-blood-donation"> <i class="menu-icon fa fa-laptop"></i>Report blood donation</a>
+                    </li>
 
                     <?php if ($this->session->user_type == 'admin') { ?>
                         <h3 class="menu-title">ADMIN TOOLS</h3>
