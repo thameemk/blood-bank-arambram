@@ -37,7 +37,7 @@ class CompleteRegistration extends CI_Controller
     {
         if ($this->user_model->is_profile_complete($this->session->email) == TRUE) {
             $this->session->set_flashdata('success', 'Login successful !');
-            redirect(base_url('user/profile'));
+            redirect(base_url('user/home'));
         } else {
             $data['page_title'] = 'Complete profile';
             $this->load->view('dashboard/template/sidebar', $data);
@@ -52,7 +52,7 @@ class CompleteRegistration extends CI_Controller
         $status = $this->user_model->complete_profile();
         if ($status == true) {
             $this->session->set_flashdata('success', 'Successfully completed your profile !');
-            redirect(base_url('user/profile'));
+            redirect(base_url('user/home'));
         } else {
             $this->session->set_flashdata('fail', 'Please fill all required fields !');
             redirect(base_url('user/complete'));

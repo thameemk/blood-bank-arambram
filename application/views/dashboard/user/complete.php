@@ -26,7 +26,7 @@
                                 <form action="<?= base_url() ?>CompleteRegistration/complete_profile" method="post" class="form-validate">
                                     <div class="form-group">
                                         <label for="name" class="control-label mb-1">Full Name</label>
-                                        <input name="name" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                        <input name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="control-label mb-1">Email</label>
@@ -53,7 +53,7 @@
                                         <label for="telephone">Mobile Phone 2</label>
                                         <input class="form-control" type="tel" name="phone_2" placeholder="Enter your Second mobile number">
                                     </div>
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <label for="country">Blood Group</label>
                                         <select name="blood_group" class="form-control" required>
                                             <option value="">Select your Blood group</option>
