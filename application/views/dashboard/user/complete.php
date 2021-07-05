@@ -23,7 +23,7 @@
                         <div id="pay-invoice">
                             <div class="card-body">
 
-                                <form action="<?= base_url() ?>user/complete_profile" method="post" class="form-validate">
+                                <form action="<?= base_url() ?>CompleteRegistration/complete_profile" method="post" class="form-validate">
                                     <div class="form-group">
                                         <label for="name" class="control-label mb-1">Full Name</label>
                                         <input name="name" type="text" class="form-control" aria-required="true" aria-invalid="false">
