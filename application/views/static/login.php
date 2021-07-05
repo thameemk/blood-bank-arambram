@@ -41,13 +41,21 @@
                 </div>
                 <div class="login-form">
                     <?php if ($this->session->flashdata('fail')) : ?>
-                        <div class="alert alert-danger" role="alert">
-                            <center><?php echo $this->session->flashdata('fail'); ?></center>
+                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                            <span class="badge badge-pill badge-danger">Error</span>
+                            <?php echo $this->session->flashdata('success'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
                     <?php endif; ?>
                     <?php if ($this->session->flashdata('success')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <center><?php echo $this->session->flashdata('success'); ?></center>
+                        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                            <span class="badge badge-pill badge-success">Success</span>
+                            <?php echo $this->session->flashdata('fail'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
                     <?php endif; ?>
                     <form>
@@ -75,7 +83,7 @@
                             </div>
                         </div>
                         <div class="register-link m-t-15 text-center">
-                            <p>Don't have account ? <a href="<?=base_url()?>signup"> Sign Up Here</a></p>
+                            <p>Don't have account ? <a href="<?= base_url() ?>signup"> Sign Up Here</a></p>
                         </div>
                     </form>
                 </div>

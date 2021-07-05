@@ -36,7 +36,7 @@ class CompleteRegistration extends CI_Controller
     function complete()
     {
         if ($this->user_model->is_profile_complete($this->session->email) == TRUE) {
-            $this->session->set_flashdata('success', 'Login successful !');
+            $this->session->set_flashdata('success', 'You have successfully Logged in !');
             redirect(base_url('user/home'));
         } else {
             $data['page_title'] = 'Complete profile';

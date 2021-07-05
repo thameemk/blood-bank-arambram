@@ -41,13 +41,21 @@
                 </div>
                 <div class="login-form">
                     <?php if ($this->session->flashdata('fail')) : ?>
-                        <div class="alert alert-danger" role="alert">
-                            <center><?php echo $this->session->flashdata('fail'); ?></center>
+                        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                            <span class="badge badge-pill badge-danger">Error</span>
+                            <?php echo $this->session->flashdata('success'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
                     <?php endif; ?>
                     <?php if ($this->session->flashdata('success')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <center><?php echo $this->session->flashdata('success'); ?></center>
+                        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+                            <span class="badge badge-pill badge-success">Success</span>
+                            <?php echo $this->session->flashdata('fail'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
                         </div>
                     <?php endif; ?>
                     <form>
@@ -62,7 +70,7 @@
                         <div class="form-group">
                             <label style="text-transform:inherit">Retype Password</label>
                             <input type="password" name="repassword" class="form-control" placeholder="Retype Password" disabled>
-                        </div>                       
+                        </div>
                         <button disabled type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign up</button>
                         <div class="social-login-content">
                             <div class="social-button">
@@ -70,7 +78,7 @@
                             </div>
                         </div>
                         <div class="register-link m-t-15 text-center">
-                            <p>Already have an account ? <a href="<?=base_url()?>login">Login Here</a></p>
+                            <p>Already have an account ? <a href="<?= base_url() ?>login">Login Here</a></p>
                         </div>
                     </form>
                 </div>
