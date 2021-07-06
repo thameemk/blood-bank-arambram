@@ -68,7 +68,7 @@ class User_model extends CI_Model
                 'is_profile_complete' => 1
             );
             $this->db->where('email', $this->session->email);
-            $this->db->insert('users', $data);
+            $this->db->update('users', $data);
             if ($this->db->affected_rows() == 1) {
                 return true;
             }
@@ -151,5 +151,38 @@ class User_model extends CI_Model
         $query = $this->db->get('report');
         $rowcount = $query->num_rows();
         return $rowcount;
+    }
+
+    function get_availability_status()
+    {
+        $this->db->where('email', $this->session->email);
+        $query = $this->db->get('users');
+        $data = $query->result_array();
+        $status = $data[0]['status'];
+        return $status;
+    }
+
+    function update_availability()
+    {
+        $current_status = $this->get_availability_status();
+        if ($current_status == 0) {
+            $data = array(
+                'status' => 1
+            );
+        } elseif ($current_status == 1) {
+            $data = array(
+                'status' => 0
+            );
+        }
+        $this->db->where('email', $this->session->email);
+        $this->db->update('users', $data);
+        if ($this->db->affected_rows() == 1) {
+            $response['status'] = true;
+            $response['message'] = 'Successfully Updated';
+        } else {
+            $response['status'] = false;
+            $response['message'] = 'Some error has been occurred';
+        }
+        return $response;
     }
 }
