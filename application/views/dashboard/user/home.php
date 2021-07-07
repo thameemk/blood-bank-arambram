@@ -4,13 +4,13 @@
         <?php if ($availabilityStatus == 0) { ?>
             <div class="card bg-flat-color-4 text-light">
                 <div class="card-body">
-                    <div class="h4 m-0"><b>Status - Not available for blood donation</b> </div>
+                    <div class="h4 m-0"><b>Status - Not available for blood donation<span class="pull-right"><?= $userProfile->blood_group ?></span></b> </div>
                 </div>
             </div>
         <?php } elseif ($availabilityStatus == 1) { ?>
             <div class="card bg-flat-color-2 text-light">
                 <div class="card-body">
-                    <div class="h4 m-0"><b>Status - Available for blood donation</b> </div>
+                    <div class="h4 m-0"><b>Status - Available for blood donation<span class="pull-right"><?= $userProfile->blood_group ?></span></b> </div>
                 </div>
             </div>
         <?php } ?>
