@@ -194,4 +194,13 @@ class User_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+
+    function is_profile_verified()
+    {
+        $this->db->where('email', $this->session->email);
+        $query = $this->db->get('users');
+        $data = $query->result_array();
+        $status = $data[0]['is_verified'];
+        return $status;
+    }
 }
