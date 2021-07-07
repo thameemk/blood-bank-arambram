@@ -1,25 +1,54 @@
 <div class="animated fadeIn">
     <div style="justify-content: center;" class="row">
         <div class="col-lg-8 col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <strong class="card-title mb-3">My Profile</strong>
-                </div>
-                <div class="card-body">
-                    <div class="mx-auto d-block">
-                        <img class="rounded-circle mx-auto d-block" src="<?= $this->session->profile_pic ?>" alt="Donor Image">
-                        <h5 class="text-sm-center mt-2 mb-1">Steven Lee</h5>
-                        <div class="location text-sm-center"><i class="fa fa-map-marker"></i> California, United States</div>
+            <aside class="profile-nav alt">
+                <section class="card">
+                    <div class="card-header user-header alt bg-dark">
+                        <div class="media">
+                            
+                                <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="<?= $userProfile->name ?>" src="<?= $userProfile->profile_pic ?>">
+                            
+                            <div class="media-body">
+                                <h2 class="text-light display-6"><?= $userProfile->name ?></h2>
+                                <p><?= ucfirst($userProfile->user_type) ?></p>
+                            </div>
+                        </div>
                     </div>
-                    <hr>
-                    <div class="card-text text-sm-center">
-                        <a href="#"><i class="fa fa-facebook pr-1"></i></a>
-                        <a href="#"><i class="fa fa-twitter pr-1"></i></a>
-                        <a href="#"><i class="fa fa-linkedin pr-1"></i></a>
-                        <a href="#"><i class="fa fa-pinterest pr-1"></i></a>
-                    </div>
-                </div>
-            </div>
+
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                             <i class="fa fa-tasks"></i> Full Name<span class="pull-right"><?= $userProfile->name ?></span>
+                        </li>
+                        <li class="list-group-item">
+                             <i class="fa fa-envelope-o"></i> Email <span class="pull-right"><?= $userProfile->email ?></span>
+                        </li>
+                        <li class="list-group-item">
+                             <i class="fa fa-group"></i> Gender <span class="pull-right"><?= $userProfile->gender ?></span>
+                        </li>
+                        <li class="list-group-item">
+                             <i class="fa fa-calendar"></i> Date of Birth<span class="pull-right"><?= $userProfile->dob ?></span>
+                        </li>
+                        <li class="list-group-item">
+                             <i class="fa fa-phone"></i> Phone<span class="pull-right"><?= $userProfile->phone ?></span>
+                        </li>
+                        <li class="list-group-item">
+                             <i class="fa fa-phone"></i> Phone 2<span class="pull-right"><?= $userProfile->phone_2 ?></span>
+                        </li>
+                        <li class="list-group-item">
+                             <i class="fa fa-plus-circle"></i> Blood Group <span class="pull-right"><?= $userProfile->blood_group ?></span>
+                        </li>
+                        <li class="list-group-item">
+                             <i class="fa fa-map-marker"></i> Pincode<span class="pull-right"><?= $userProfile->pin_code ?></span>
+                        </li>
+                        <li class="list-group-item">
+                             <i class="fa fa-map-marker"></i> Address<span class="pull-right"><?= $userProfile->home_address ?></span>
+                        </li>
+
+                    </ul>
+
+                </section>
+            </aside>
         </div>
     </div>
 </div>
