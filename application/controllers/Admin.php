@@ -33,6 +33,7 @@ class Admin extends CI_Controller
         $data['page'] = $page;
         $data['authURL'] =  $this->facebook->login_url();
         $data['allDonors'] = $this->admin_model->get_all_donors();
+        $data['profile_status'] = $this->user_model->is_profile_verified();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/admin/' . $page, $data);
@@ -42,6 +43,18 @@ class Admin extends CI_Controller
     function verify_user()
     {
         $response = $this->admin_model->verify_user();
+        if ($response['status'] == true) {
+            $this->session->set_flashdata('success', $response['message']);
+        } else {
+            $this->session->set_flashdata('fail', $response['message']);
+        }
+        redirect(base_url('admin/view-all-donors'));
+    }
+
+    function change_status()
+    {
+        $email = $this->security->xss_clean($this->input->post('email'));
+        $response = $this->user_model->update_availability($email);
         if ($response['status'] == true) {
             $this->session->set_flashdata('success', $response['message']);
         } else {

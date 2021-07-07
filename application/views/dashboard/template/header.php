@@ -97,3 +97,13 @@
                  </button>
              </div>
          <?php endif; ?>
+
+         <?php if ($profile_status == 0) { ?>
+             <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                 <span class="badge badge-pill badge-danger">Error</span>
+                 Your profile not verified
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">×</span>
+                 </button>
+             </div>
+         <?php } ?>

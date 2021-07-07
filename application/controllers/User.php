@@ -33,8 +33,9 @@ class User extends CI_Controller
         $data['authURL'] =  $this->facebook->login_url();
         $data['donationReports'] = $this->user_model->get_all_blood_donations();
         $data['totalDonations'] = $this->user_model->get_total_blood_donations();
-        $data['availabilityStatus'] = $this->user_model->get_availability_status();
+        $data['availabilityStatus'] = $this->user_model->get_availability_status($this->session->email);
         $data['userProfile'] = $this->user_model->get_user_details();
+        $data['profile_status'] = $this->user_model->is_profile_verified();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/user/' . $page, $data);
@@ -54,7 +55,7 @@ class User extends CI_Controller
 
     public function update_status()
     {
-        $response = $this->user_model->update_availability();
+        $response = $this->user_model->update_availability($this->session->email);
         if ($response['status'] == true) {
             $this->session->set_flashdata('success', $response['message']);
         } else {

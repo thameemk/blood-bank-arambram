@@ -14,6 +14,7 @@
                                 <th>Phone Number</th>
                                 <th>Blood Group</th>
                                 <th>Verify</th>
+                                <th>Availability</th>
                                 <th>View Details</th>
 
                             </tr>
@@ -34,6 +35,16 @@
                                                 <button type="submit" class="btn btn-warning">Verify</button>
                                             </form>
                                         <?php } ?>
+                                    </td>
+                                    <td>
+                                        <form method="post" action="<?= base_url() ?>Admin/change_status">
+                                            <input type="hidden" name="email" value="<?= $row['email'] ?>">
+                                            <?php if ($row['status'] == 1) { ?>
+                                                <button type="submit" class="btn btn-success">Available</button>
+                                            <?php } elseif ($row['status'] == 0) { ?>
+                                                <button type="submit" class="btn btn-danger">Not Available</button>
+                                            <?php } ?>
+                                        </form>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-primary">View</button>
