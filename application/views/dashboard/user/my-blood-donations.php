@@ -1,12 +1,11 @@
 <div class="animated fadeIn">
     <div class="row">
-
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Blood Donation Reports </strong>
                 </div>
-                <div class="card-body">
+                <div class="scrolltable card-body">
                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                         <thead>
                             <tr>
