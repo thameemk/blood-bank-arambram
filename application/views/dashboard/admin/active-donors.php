@@ -9,32 +9,23 @@
                     <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Report ID</th>
+                                <th>ID</th>
                                 <th>Name</th>
-                                <th>Donated Date</th>
-                                <th>Donated Place</th>
-                                <th>Verify</th>
-                                <th>View Details</th>
+                                <th>Phone 1</th>
+                                <th>Phone 2</th>
+                                <th>Blood Group</th>
+                                <th>Detais</th>                               
 
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($allDonations as $row) { ?>
+                            <?php foreach ($allActiveDonors as $row) { ?>
                                 <tr>
-                                    <td><?= $row['report_id'] ?></td>
+                                    <td><?= $row['user_id'] ?></td>
                                     <td><?= $row['name'] ?></td>
-                                    <td><?= $row['donated_date'] ?></td>
-                                    <td><?= $row['donated_place'] ?></td>
-                                    <td>
-                                        <?php if ($row['is_verified'] == 1) { ?>
-                                            <span class="btn btn-success">Verified by<br><?= $row['verified_admin'] ?></span>
-                                        <?php } elseif ($row['is_verified'] == 0) { ?>
-                                            <form method="post" action="<?= base_url() ?>Admin/verify_donation">
-                                                <input type="hidden" name="report_id" value="<?= $row['report_id'] ?>">                                                
-                                                <button type="submit" class="btn btn-warning">Verify</button>
-                                            </form>
-                                        <?php } ?>
-                                    </td>
+                                    <td><a style="color: blue;" href="tel:<?= $row['phone'] ?>"><?= $row['phone'] ?></a></td>
+                                    <td><a style="color: blue;" href="tel:<?= $row['phone_2'] ?>"><?= $row['phone_2'] ?></a></td>
+                                    <td><?= $row['blood_group'] ?></td>
                                     <td>
                                         <button id="<?= $row['email'] ?>" onclick="getUserDetails(this);" data-toggle="modal" data-target="#scrollmodal" type="button" class="btn btn-primary">View</button>
                                     </td>

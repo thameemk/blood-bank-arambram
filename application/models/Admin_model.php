@@ -63,4 +63,14 @@ class Admin_model extends CI_Model
         }
         return $response;
     }
+
+    function get_all_active_donors()
+    {
+        $this->db->select('user_id,name,blood_group,phone,email,phone_2');
+        $this->db->from('users');
+        $this->db->where('status',1);
+        $this->db->where('is_verified',1);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

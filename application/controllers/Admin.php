@@ -35,6 +35,7 @@ class Admin extends CI_Controller
         $data['allDonors'] = $this->admin_model->get_all_donors();
         $data['profile_status'] = $this->user_model->is_profile_verified();
         $data['allDonations'] = $this->admin_model->get_all_donations();
+        $data['allActiveDonors'] = $this->admin_model->get_all_active_donors();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/admin/' . $page, $data);

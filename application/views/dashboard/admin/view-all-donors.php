@@ -24,7 +24,7 @@
                                 <tr>
                                     <td><?= $row['user_id'] ?></td>
                                     <td><?= $row['name'] ?></td>
-                                    <td><?= $row['phone'] ?></td>
+                                    <td><a style="color: blue;" href="tel:<?= $row['phone'] ?>"><?= $row['phone'] ?></a></td>
                                     <td><?= $row['blood_group'] ?></td>
                                     <td>
                                         <?php if ($row['is_verified'] == 1) { ?>
@@ -157,9 +157,9 @@
                     jQuery("#name").append(response.name);
                     jQuery("#user_type").append(response.user_type.capitalize());
                     jQuery("#name_2").append(response.name);
-                    jQuery("#email").append(response.email);
-                    jQuery("#phone").append(response.phone);
-                    jQuery("#phone_2").append(response.phone_2);
+                    jQuery("#email").append("<a style='color:blue;' href='tel:"+response.email+"'>"+response.email+"</a>");
+                    jQuery("#phone").append("<a style='color:blue;' href='tel:"+response.phone+"'>"+response.phone+"</a>");
+                    jQuery("#phone_2").append("<a style='color:blue;' href='tel:"+response.phone_2+"'>"+response.phone_2+"</a>");
                     jQuery("#dob").append(response.dob);
                     jQuery("#gender").append(response.gender);
                     jQuery("#profile_pic").append("<img class='align-self-center rounded-circle mr-3' style='width:85px; height:85px;' alt='" + response.name + "' src='" + response.profile_pic + "'>");
