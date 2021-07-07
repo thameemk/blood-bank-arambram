@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
-    <?php if ($page == 'my-blood-donations' || $page = 'view-all-donors') { ?>
+    <?php if ($page == 'my-blood-donations' || $page == 'view-all-donors' || $page == 'view-all-donations') { ?>
         <style>
             .scrolltable {
                 overflow-x: auto;
@@ -67,7 +67,7 @@
 
                     <?php if ($this->session->user_type == 'admin') { ?>
                         <h3 class="menu-title">ADMIN TOOLS</h3>
-                        
+
                         <li>
                             <a href="<?= base_url() ?>admin/view-all-donors"> <i class="menu-icon fa fa-laptop"></i>View All Donors</a>
                         </li>

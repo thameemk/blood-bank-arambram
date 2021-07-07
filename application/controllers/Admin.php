@@ -34,6 +34,7 @@ class Admin extends CI_Controller
         $data['authURL'] =  $this->facebook->login_url();
         $data['allDonors'] = $this->admin_model->get_all_donors();
         $data['profile_status'] = $this->user_model->is_profile_verified();
+        $data['allDonations'] = $this->admin_model->get_all_donations();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/admin/' . $page, $data);
@@ -68,5 +69,16 @@ class Admin extends CI_Controller
         $email = $this->security->xss_clean($email);
         $response = $this->user_model->get_user_details($email);
         echo json_encode($response);
+    }
+
+    function verify_donation()
+    {
+        $response = $this->admin_model->verify_user_donation();
+        if ($response['status'] == true) {
+            $this->session->set_flashdata('success', $response['message']);
+        } else {
+            $this->session->set_flashdata('fail', $response['message']);
+        }
+        redirect(base_url('admin/view-all-donations'));
     }
 }

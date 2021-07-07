@@ -28,7 +28,7 @@
                                     <td><?= $row['blood_group'] ?></td>
                                     <td>
                                         <?php if ($row['is_verified'] == 1) { ?>
-                                            <span class="btn btn-success">Verified</span>
+                                            <span class="btn btn-success">Verified by<br><?= $row['verified_admin'] ?></span>
                                         <?php } elseif ($row['is_verified'] == 0) { ?>
                                             <form method="post" action="<?= base_url() ?>Admin/verify_user">
                                                 <input type="hidden" name="email" value="<?= $row['email'] ?>">
