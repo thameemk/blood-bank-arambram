@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
-    <?php if ($page == 'my-blood-donations' || $page='view-all-donors') { ?>
+    <?php if ($page == 'my-blood-donations' || $page = 'view-all-donors') { ?>
         <style>
             .scrolltable {
                 overflow-x: auto;

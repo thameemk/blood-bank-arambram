@@ -62,4 +62,11 @@ class Admin extends CI_Controller
         }
         redirect(base_url('admin/view-all-donors'));
     }
+
+    function get_user_data($email)
+    {
+        $email = $this->security->xss_clean($email);
+        $response = $this->user_model->get_user_details($email);
+        echo json_encode($response);
+    }
 }

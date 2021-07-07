@@ -34,7 +34,7 @@ class User extends CI_Controller
         $data['donationReports'] = $this->user_model->get_all_blood_donations();
         $data['totalDonations'] = $this->user_model->get_total_blood_donations();
         $data['availabilityStatus'] = $this->user_model->get_availability_status($this->session->email);
-        $data['userProfile'] = $this->user_model->get_user_details();
+        $data['userProfile'] = $this->user_model->get_user_details($this->session->email);
         $data['profile_status'] = $this->user_model->is_profile_verified();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);

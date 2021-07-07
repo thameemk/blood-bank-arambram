@@ -13,7 +13,8 @@
 <script src="<?= base_url() ?>assets/js/main.js"></script>
 
 
-<?php if ($page == 'my-blood-donations' || $page='view-all-donors') { ?>
+
+<?php if ($page == 'my-blood-donations' || $page = 'view-all-donors') { ?>
     <script src="<?= base_url() ?>assets/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="<?= base_url() ?>assets/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="<?= base_url() ?>assets/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
