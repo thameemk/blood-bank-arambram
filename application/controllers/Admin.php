@@ -10,9 +10,9 @@ class Admin extends CI_Controller
         $this->load->model('user_model');
         // Load facebook oauth library 
         $this->load->library('facebook');
-        if (!$this->session->userdata('sess_logged_in') == 1 || !$this->session->user_type == 'admin') {
+        if (!$this->session->userdata('sess_logged_in') == 1 || $this->session->user_type != 'admin') {
             $this->session->set_flashdata('fail', 'You are not authorized. please login and try again! ');
-            redirect(base_url('login'));
+            redirect(base_url('auth/logout'));
             exit();
         }
         if (!$this->user_model->is_profile_complete($this->session->email) == TRUE) {
