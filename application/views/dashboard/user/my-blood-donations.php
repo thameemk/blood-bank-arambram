@@ -22,7 +22,13 @@
                                     <td><?= $row->report_id ?></td>
                                     <td><?= $row->donated_date ?></td>
                                     <td><?= $row->donated_place ?></td>
-                                    <td><?= $row->is_verified ?></td>
+                                    <td>
+                                        <?php if ($row->is_verified == 0) { ?>
+                                            Not Verified
+                                        <?php } elseif ($row->is_verified == 1) { ?>
+                                            Verified
+                                        <?php } ?>
+                                    </td>
                                     <td><?= $row->verified_admin ?></td>
                                 </tr>
                             <?php } ?>

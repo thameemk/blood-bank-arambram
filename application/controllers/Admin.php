@@ -32,9 +32,21 @@ class Admin extends CI_Controller
         $data['page_title'] = $temp1;
         $data['page'] = $page;
         $data['authURL'] =  $this->facebook->login_url();
+        $data['allDonors'] = $this->admin_model->get_all_donors();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/admin/' . $page, $data);
         $this->load->view('dashboard/template/footer');
+    }
+
+    function verify_user()
+    {
+        $response = $this->admin_model->verify_user();
+        if ($response['status'] == true) {
+            $this->session->set_flashdata('success', $response['message']);
+        } else {
+            $this->session->set_flashdata('fail', $response['message']);
+        }
+        redirect(base_url('admin/view-all-donors'));
     }
 }
