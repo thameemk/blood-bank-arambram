@@ -67,8 +67,12 @@
 
                     <?php if ($this->session->user_type == 'admin') { ?>
                         <h3 class="menu-title">ADMIN TOOLS</h3>
+                        
                         <li>
                             <a href="<?= base_url() ?>admin/view-all-donors"> <i class="menu-icon fa fa-laptop"></i>View All Donors</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url() ?>admin/view-all-donations"> <i class="menu-icon fa fa-laptop"></i>View All Donations</a>
                         </li>
                     <?php } ?>
 
