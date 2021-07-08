@@ -11,7 +11,7 @@
                     <div id="pay-invoice">
                         <div class="card-body">
 
-                            <form action="<?= base_url() ?>Admin/add_donor" method="post" class="form-validate">
+                            <form action="<?= base_url() ?>Admin/add_donor" method="post" class="form-validate" novalidate>
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Full Name</label>
                                     <input name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" required>

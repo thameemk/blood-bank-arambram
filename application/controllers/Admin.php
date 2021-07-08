@@ -82,4 +82,15 @@ class Admin extends CI_Controller
         }
         redirect(base_url('admin/view-all-donations'));
     }
+
+    function add_donor()
+    {        
+        $response = $this->admin_model->add_new_donor();
+        if ($response['status'] == true) {
+            $this->session->set_flashdata('success', $response['message']);
+        } else {
+            $this->session->set_flashdata('fail', $response['message']);
+        }
+        redirect(base_url('admin/add-donor'));
+    }
 }
