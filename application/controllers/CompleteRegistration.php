@@ -41,6 +41,7 @@ class CompleteRegistration extends CI_Controller
         } else {
             $data['page'] = 'complete';
             $data['page_title'] = 'Complete profile';
+            $data['profile_status'] = $this->user_model->is_profile_verified();
             $this->load->view('dashboard/template/sidebar', $data);
             $this->load->view('dashboard/template/header', $data);
             $this->load->view('dashboard/user/complete', $data);
