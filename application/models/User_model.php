@@ -68,7 +68,7 @@ class User_model extends CI_Model
                 'is_profile_complete' => 1
             );
             $this->db->where('email', $this->session->email);
-            $this->db->update('users', $data);
+            $this->db->update('users', $user);
             if ($this->db->affected_rows() == 1) {
                 return true;
             }
