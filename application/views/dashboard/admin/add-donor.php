@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="control-label mb-1">Email</label>
-                                    <input type="email" class="form-control" aria-required="true" aria-invalid="false" required>
+                                    <input type="email" class="form-control" name="email" aria-required="true" aria-invalid="false" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="gender">Gender</label>
