@@ -39,6 +39,7 @@ class CompleteRegistration extends CI_Controller
             $this->session->set_flashdata('success', 'You have successfully Logged in !');
             redirect(base_url('user/home'));
         } else {
+            $data['page'] = 'complete';
             $data['page_title'] = 'Complete profile';
             $this->load->view('dashboard/template/sidebar', $data);
             $this->load->view('dashboard/template/header', $data);
