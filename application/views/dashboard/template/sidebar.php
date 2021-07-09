@@ -71,6 +71,9 @@
                             <a href="<?= base_url() ?>admin/add-donor"> <i class="menu-icon fa fa-laptop"></i>Add Donor</a>
                         </li>
                         <li>
+                            <a href="<?= base_url() ?>admin/add-donation"> <i class="menu-icon fa fa-laptop"></i>Add Donation</a>
+                        </li>
+                        <li>
                             <a href="<?= base_url() ?>admin/active-donors"> <i class="menu-icon fa fa-laptop"></i>Active Donors</a>
                         </li>
                         <li>

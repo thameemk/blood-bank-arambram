@@ -84,7 +84,7 @@ class Admin extends CI_Controller
     }
 
     function add_donor()
-    {        
+    {
         $response = $this->admin_model->add_new_donor();
         if ($response['status'] == true) {
             $this->session->set_flashdata('success', $response['message']);
@@ -92,5 +92,16 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('fail', $response['message']);
         }
         redirect(base_url('admin/add-donor'));
+    }
+
+    function report_user_blood_donation()
+    {
+        $response = $this->admin_model->report_user_blood_donation();
+        if ($response['status'] == true) {
+            $this->session->set_flashdata('success', $response['message']);
+        } else {
+            $this->session->set_flashdata('fail', $response['message']);
+        }
+        redirect(base_url('admin/add-donation'));
     }
 }
