@@ -80,13 +80,13 @@ class Admin_model extends CI_Model
             $this->form_validation->set_rules('blood_group', 'blood_group', 'required');
             $this->form_validation->set_rules('pin_code', 'pin_code', 'required');
             $this->form_validation->set_rules('home_address', 'home_address', 'required');
-            $this->form_validation->set_rules('terms_conditions', 'terms_conditions', 'required');
             if ($this->form_validation->run() == FALSE) {
                 $response['status'] = false;
                 $response['message'] = 'Fill all requird fields';
             } else {
                 $user = array(
                     'name' => $this->input->post('name'),
+                    'email' => $this->input->post('email'),
                     'gender' => $this->input->post('gender'),
                     'dob' => $this->input->post('dob'),
                     'phone' => $this->input->post('phone'),
@@ -94,12 +94,14 @@ class Admin_model extends CI_Model
                     'blood_group' => $this->input->post('blood_group'),
                     'pin_code' => $this->input->post('pin_code'),
                     'home_address' => $this->input->post('home_address'),
-                    'is_profile_complete' => 1
+                    'is_profile_complete' => 1,
+                    'status' => 1,
+                    'is_verified' => 1,
+                    'verified_admin' => $this->session->email
                 );
-                $this->db->where('email', $this->session->email);
-                $this->db->update('users', $user);
+                $this->db->insert('users', $user);
                 if ($this->db->affected_rows() == 1) {
-                    $response['status'] = false;
+                    $response['status'] = true;
                     $response['message'] = 'Successfully Updated';
                 } else {
                     $response['status'] = false;
