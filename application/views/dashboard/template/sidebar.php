@@ -45,8 +45,6 @@
                 </button>
                 <?php if ($this->session->user_type == 'admin') { ?>
                     <span class="navbar-brand text-white"><b>Blood Donors <i>Admin</i></b></span>
-                <?php } else { ?>
-                    <span class="navbar-brand text-white"><b>Blood Donors - <i>User</i></b></span>
                 <?php } ?>
 
             </div>
@@ -55,14 +53,6 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="<?= base_url() ?>user/home"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
-                    </li>
-
-                    <h3 class="menu-title">USER TOOLS</h3>
-                    <li>
-                        <a href="<?= base_url() ?>user/report-blood-donation"> <i class="menu-icon fa fa-laptop"></i>Report Blood Donation</a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url() ?>user/my-blood-donations"> <i class="menu-icon fa fa-table"></i>My Blood Donations </a>
                     </li>
 
                     <?php if ($this->session->user_type == 'admin') { ?>

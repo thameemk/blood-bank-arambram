@@ -6,10 +6,6 @@ class Auth extends CI_Controller
     function __construct()
     {
         parent::__construct();
-
-        // Load facebook oauth library 
-        $this->load->library('facebook');
-
         // Load user model 
         $this->load->model('user_model');
     }
@@ -58,16 +54,11 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        $session_data = array(
-            'sess_logged_in' => 0
-        );
-        $this->session->set_userdata($session_data);
-        // Remove local Facebook session 
-        $this->facebook->destroy_session();
-        // Remove user data from session 
-        $this->session->unset_userdata('userData');
-        // Redirect to login page        
-        $this->session->set_flashdata('fail', 'Logged out successfully! ');
-        redirect(base_url('login'));
+		$this->googleplus->revokeToken();
+		$session_data = array(
+			'sess_logged_in' => 0
+		);
+		$this->session->set_userdata($session_data);
+		redirect('');
     }
 }

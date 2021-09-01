@@ -58,7 +58,7 @@
                             </button>
                         </div>
                     <?php endif; ?>
-                    <form>
+                    <form method="post" action="<?=base_url()?>auth/login">
                         <div class="form-group">
                             <label style="text-transform:inherit">Email address</label>
                             <input type="email" class="form-control" placeholder="Email" disabled>
@@ -77,14 +77,6 @@
 
                         </div>
                         <button disabled type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
-                        <div class="social-login-content">
-                            <div class="social-button">
-                                <a href="<?php echo $authURL ?>" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign in with facebook</a>
-                            </div>
-                        </div>
-                        <div class="register-link m-t-15 text-center">
-                            <p>Don't have account ? <a href="<?= base_url() ?>signup"> Sign Up Here</a></p>
-                        </div>
                     </form>
                 </div>
             </div>

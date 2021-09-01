@@ -8,16 +8,9 @@ class Admin extends CI_Controller
         $this->load->helper('url');
         $this->load->model('admin_model');
         $this->load->model('user_model');
-        // Load facebook oauth library 
-        $this->load->library('facebook');
         if (!$this->session->userdata('sess_logged_in') == 1 || $this->session->user_type != 'admin') {
             $this->session->set_flashdata('fail', 'You are not authorized. please login and try again! ');
             redirect(base_url('auth/logout'));
-            exit();
-        }
-        if (!$this->user_model->is_profile_complete($this->session->email) == TRUE) {
-            $this->session->set_flashdata('fail', 'Please complete your profile! ');
-            redirect(base_url('user/complete'));
             exit();
         }
     }
@@ -31,7 +24,6 @@ class Admin extends CI_Controller
         $temp1 = ucfirst($temp);
         $data['page_title'] = $temp1;
         $data['page'] = $page;
-        $data['authURL'] =  $this->facebook->login_url();
         $data['allDonors'] = $this->admin_model->get_all_donors();
         $data['profile_status'] = $this->user_model->is_profile_verified();
         $data['allDonations'] = $this->admin_model->get_all_donations();
