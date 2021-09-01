@@ -18,4 +18,6 @@ application/logs/*
 .htaccess
 application/config/development
 
+.venv/*
+
 demo/*
