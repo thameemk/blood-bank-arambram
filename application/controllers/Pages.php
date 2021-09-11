@@ -14,7 +14,7 @@ class Pages extends CI_Controller
 		if ($this->session->userdata('sess_logged_in') == 1) {
 			redirect(base_url('admin/home'));
 		} else {
-			$this->load->view('static/login', $data);
+			$this->load->view('static/login');
 		}
 	}
 }
