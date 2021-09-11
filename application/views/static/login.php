@@ -61,11 +61,11 @@
                     <form method="post" action="<?=base_url()?>auth/process">
                         <div class="form-group">
                             <label style="text-transform:inherit">Email address</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input name="user_email" type="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label style="text-transform:inherit">Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input name="password" type="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <label>
