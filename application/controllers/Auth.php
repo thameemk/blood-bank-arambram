@@ -7,33 +7,22 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         // Load user model 
-        $this->load->model('user_model');
+        $this->load->model('report_model');
     }
 
-    function oauth2callback()
+    function process()
     {
-        $userData = array();
-        if ($this->facebook->is_authenticated()) {
-            $fbUser = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,picture');
-            $userData['oauth_provider'] = 'facebook';
-            $first_name   = !empty($fbUser['first_name']) ? $fbUser['first_name'] : '';
-            $last_name    = !empty($fbUser['last_name']) ? $fbUser['last_name'] : '';
-            $userData['oauth_user_name'] = $first_name . " " . $last_name;
-            $userData['email']        = !empty($fbUser['email']) ? $fbUser['email'] : '';
-            $userData['profile_pic']    = !empty($fbUser['picture']['data']['url']) ? $fbUser['picture']['data']['url'] : '';
-            $user_type = $this->getusertype($userData['email']);
-            if ($userData['email'] != null) {
-                $userData['sess_logged_in'] = 1;
-                $userData['user_type'] = $user_type;
-                $this->session->set_userdata($userData);
-                redirect(base_url() . 'user/register');
-            } else {
-                $this->session->set_flashdata('fail', 'Some error has been occurred. Please login and try again! ');
-                redirect(base_url('login'));
-            }
-        } else {
-            $this->session->set_flashdata('fail', 'Some error has been occurred. Please login and try again! ');
-            redirect(base_url('login'));
+        $result = $this->report_model->login();
+
+        if(! $result){
+            // If user did not validate, then show them login page again
+            $this->session->set_flashdata('fail', 'Email or Password is incorrect');
+            $this->load->view('login');
+        }
+        else {
+            $this->session->set_flashdata('msg', 'Login success');            
+            redirect('Admin/home');
+
         }
     }
 
