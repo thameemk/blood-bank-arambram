@@ -17,11 +17,11 @@ class Auth extends CI_Controller
         if(! $result){
             // If user did not validate, then show them login page again
             $this->session->set_flashdata('fail', 'Email or Password is incorrect');
-            $this->load->view('login');
+            redirect(base_url());
         }
         else {
             $this->session->set_flashdata('msg', 'Login success');            
-            redirect('Admin/home');
+            redirect('admin/home');
 
         }
     }
