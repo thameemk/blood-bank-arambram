@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?= $page_title ?> | Blood Donors Arambram</title>
+    <title> Login | Blood Donors Arambram</title>
     <meta name="description" content="The official website of Blood Donors Arambram">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -61,11 +61,11 @@
                     <form method="post" action="<?=base_url()?>auth/login">
                         <div class="form-group">
                             <label style="text-transform:inherit">Email address</label>
-                            <input type="email" class="form-control" placeholder="Email" disabled>
+                            <input type="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label style="text-transform:inherit">Password</label>
-                            <input type="password" class="form-control" placeholder="Password" disabled>
+                            <input type="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <label>
@@ -76,7 +76,7 @@
                             </label>
 
                         </div>
-                        <button disabled type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
                     </form>
                 </div>
             </div>
