@@ -58,7 +58,7 @@
                             </button>
                         </div>
                     <?php endif; ?>
-                    <form method="post" action="<?=base_url()?>auth/login">
+                    <form method="post" action="<?=base_url()?>auth/process">
                         <div class="form-group">
                             <label style="text-transform:inherit">Email address</label>
                             <input type="email" class="form-control" placeholder="Email">
