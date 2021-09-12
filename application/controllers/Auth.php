@@ -21,7 +21,7 @@ class Auth extends CI_Controller
         }
         else {
             $this->session->set_flashdata('success', 'Login success');            
-            redirect('admin/home');
+            redirect(base_url().'admin/home');
 
         }
     }
@@ -43,7 +43,6 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-		$this->googleplus->revokeToken();
 		$session_data = array(
 			'sess_logged_in' => 0
 		);

@@ -15,6 +15,11 @@ class Admin extends CI_Controller
         }
     }
 
+    public function home()
+    {
+        echo "success";
+    }
+
     public function admin_pages($page)
     {
         if (!file_exists(APPPATH . 'views/dashboard/admin/' . $page . '.php')) {

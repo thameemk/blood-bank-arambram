@@ -7,6 +7,7 @@ class Report_model extends CI_Model
     function __construct()
     {
         $this->load->database();
+        $this->load->helper('form');
     }
 
     function login()
@@ -23,9 +24,9 @@ class Report_model extends CI_Model
         if($num_rows == 1)
         {
               $row = $query->row();
-              if (password_verify($password, $row->user_password)) {
+              if (password_verify($password, $row->password)) {
                   $data = array(
-                      'lid' => $row->lid,
+                      'lid' => $row->id,
                       'user_email' => $row->user_email,
                       'validated' => true
                   );
