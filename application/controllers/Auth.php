@@ -20,7 +20,7 @@ class Auth extends CI_Controller
             redirect(base_url());
         }
         else {
-            $this->session->set_flashdata('success', 'Login success');            
+            $this->session->set_flashdata('success', 'Login success');      
             redirect(base_url().'admin/home');
 
         }

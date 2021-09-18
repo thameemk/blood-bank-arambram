@@ -8,7 +8,7 @@ class Admin extends CI_Controller
         $this->load->helper('url');
         $this->load->model('admin_model');
         $this->load->model('user_model');
-        if (!$this->session->userdata('sess_logged_in') == 1 || $this->session->user_type != 'admin') {
+        if (!$this->session->userdata('sess_logged_in') == 1 and $this->session->user_type != 'admin') {
             $this->session->set_flashdata('fail', 'You are not authorized. please login and try again! ');
             redirect(base_url('auth/logout'));
             exit();
@@ -18,6 +18,7 @@ class Admin extends CI_Controller
     public function home()
     {
         echo "success";
+        exit();
     }
 
     public function admin_pages($page)

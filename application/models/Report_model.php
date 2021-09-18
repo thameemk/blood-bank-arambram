@@ -28,7 +28,8 @@ class Report_model extends CI_Model
                   $data = array(
                       'lid' => $row->id,
                       'user_email' => $row->user_email,
-                      'validated' => true
+                      'user_type' => $row->user_type,
+                      'sess_logged_in' => true
                   );
                   $this->session->set_userdata($data);
                   return true;
