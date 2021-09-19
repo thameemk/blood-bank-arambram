@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?= $this->session->oauth_user_name ?> | <?= $page_title ?> - Blood donors Arambram </title>
+    <title><?=$this->session->user_name?> | <?= $page_title ?> - Blood donors Arambram </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="#">
@@ -52,7 +52,7 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="<?= base_url() ?>user/home"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="<?= base_url() ?>admin/home"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
 
                     <?php if ($this->session->user_type == 'admin') { ?>

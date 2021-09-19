@@ -37,11 +37,11 @@
              <div class="col-sm-5">
                  <div class="user-area dropdown float-right">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <img class="user-avatar rounded-circle" src="<?= $this->session->profile_pic ?>" alt="<?= $this->session->oauth_user_name ?>">
+                         <img class="user-avatar rounded-circle" src="<?=base_url()?>assets/images/admin.jpg" alt="<?=$this->session->user_name?>">
                      </a>
 
                      <div class="user-menu dropdown-menu">
-                         <a class="nav-link" href="<?= base_url() ?>user/profile"><i class="fa fa-user"></i> My Profile</a>
+                         <a class="nav-link" href="<?= base_url() ?>admin/profile"><i class="fa fa-user"></i> My Profile</a>
 
                          <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
 
@@ -97,13 +97,3 @@
                  </button>
              </div>
          <?php endif; ?>
-
-         <?php if ($profile_status == 0) { ?>
-             <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-                 <span class="badge badge-pill badge-danger">Error</span>
-                 Your profile not verified
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                     <span aria-hidden="true">×</span>
-                 </button>
-             </div>
-         <?php } ?>

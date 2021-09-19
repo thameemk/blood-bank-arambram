@@ -15,12 +15,6 @@ class Admin extends CI_Controller
         }
     }
 
-    public function home()
-    {
-        echo "success";
-        exit();
-    }
-
     public function admin_pages($page)
     {
         if (!file_exists(APPPATH . 'views/dashboard/admin/' . $page . '.php')) {
@@ -30,10 +24,10 @@ class Admin extends CI_Controller
         $temp1 = ucfirst($temp);
         $data['page_title'] = $temp1;
         $data['page'] = $page;
-        $data['allDonors'] = $this->admin_model->get_all_donors();
-        $data['profile_status'] = $this->user_model->is_profile_verified();
-        $data['allDonations'] = $this->admin_model->get_all_donations();
-        $data['allActiveDonors'] = $this->admin_model->get_all_active_donors();
+        // $data['allDonors'] = $this->admin_model->get_all_donors();
+        // $data['profile_status'] = $this->user_model->is_profile_verified();
+        // $data['allDonations'] = $this->admin_model->get_all_donations();
+        // $data['allActiveDonors'] = $this->admin_model->get_all_active_donors();
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/admin/' . $page, $data);
