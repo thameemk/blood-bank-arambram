@@ -193,10 +193,9 @@ class Admin_model extends CI_Model
 
     function get_all_active_donors()
     {
-        $this->db->select('user_id,name,blood_group,phone,email,phone_2');
+        $this->db->select('id,user_name,blood_group,user_phone,user_email,user_phone_2');
         $this->db->from('users');
-        $this->db->where('status', 1);
-        $this->db->where('is_verified', 1);
+        $this->db->where('is_available', 1);
         $query = $this->db->get();
         // foreach ($query->result() as $user) {
         //     $status = $this->check_date($user->user_id);
