@@ -13,7 +13,7 @@
                                 <th>Name</th>
                                 <th>Donated Date</th>
                                 <th>Donated Place</th>
-                                <th>Verify</th>
+                                <th>Added Admin</th>
                                 <th>View Details</th>
 
                             </tr>
@@ -22,21 +22,14 @@
                             <?php foreach ($allDonations as $row) { ?>
                                 <tr>
                                     <td><?= $row['report_id'] ?></td>
-                                    <td><?= $row['name'] ?></td>
+                                    <td><?= $row['user_name'] ?></td>
                                     <td><?= $row['donated_date'] ?></td>
                                     <td><?= $row['donated_place'] ?></td>
                                     <td>
-                                        <?php if ($row['is_verified'] == 1) { ?>
-                                            <span class="btn btn-success">Verified by<br><?= $row['verified_admin'] ?></span>
-                                        <?php } elseif ($row['is_verified'] == 0) { ?>
-                                            <form method="post" action="<?= base_url() ?>Admin/verify_donation">
-                                                <input type="hidden" name="report_id" value="<?= $row['report_id'] ?>">
-                                                <button type="submit" class="btn btn-warning">Verify</button>
-                                            </form>
-                                        <?php } ?>
+                                        <?= $row['added_by'] ?>
                                     </td>
                                     <td>
-                                        <button id="<?= $row['email'] ?>" onclick="getUserDetails(this);" data-toggle="modal" data-target="#scrollmodal" type="button" class="btn btn-primary">View</button>
+                                        <button id="<?= $row['user_phone'] ?>" onclick="getUserDetails(this);" data-toggle="modal" data-target="#scrollmodal" type="button" class="btn btn-primary">View</button>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -126,10 +119,10 @@
     }
 
     function getUserDetails(div) {
-        var email = div.id;
+        var user_phone = div.id;
         jQuery.ajax({
             type: 'post',
-            url: "<?= base_url() ?>Admin/get_user_data/" + email,
+            url: "<?= base_url() ?>Admin/get_user_data/" + user_phone,
             data: "",
             async: false,
             processData: false,
@@ -143,20 +136,20 @@
             success: function(result) {
                 var response = jQuery.parseJSON(result)
                 if (result != "null") {
-                    jQuery("#name").append(response.name);
+                    jQuery("#name").append(response.user_name);
                     jQuery("#user_type").append(response.user_type.capitalize());
-                    jQuery("#name_2").append(response.name);
-                    jQuery("#email").append("<a style='color:blue;' href='tel:" + response.email + "'>" + response.email + "</a>");
-                    jQuery("#phone").append("<a style='color:blue;' href='tel:" + response.phone + "'>" + response.phone + "</a>");
-                    jQuery("#phone_2").append("<a style='color:blue;' href='tel:" + response.phone_2 + "'>" + response.phone_2 + "</a>");
+                    jQuery("#name_2").append(response.user_name);
+                    jQuery("#email").append("<a style='color:blue;' href='tel:" + response.user_email + "'>" + response.user_email + "</a>");
+                    jQuery("#phone").append("<a style='color:blue;' href='tel:" + response.user_phone + "'>" + response.user_phone + "</a>");
+                    jQuery("#phone_2").append("<a style='color:blue;' href='tel:" + response.user_phone_2 + "'>" + response.user_phone_2 + "</a>");
                     jQuery("#dob").append(response.dob);
                     jQuery("#gender").append(response.gender);
-                    jQuery("#pin_code").append(response.pin_code);
+                    jQuery("#pin_code").append(response.pincode);
                     jQuery("#blood_group").append(response.blood_group);
-                    jQuery("#home_address").append(response.home_address);
-                    if (response.profile_pic) {
-                        jQuery("#profile_pic").append("<img class='align-self-center rounded-circle mr-3' style='width:85px; height:85px;' alt='" + response.name + "' src='" + response.profile_pic + "'>");
-                    }
+                    jQuery("#home_address").append(response.address);
+                    // if (response.profile_pic) {                        
+                    //     jQuery("#profile_pic").append("<img class='align-self-center rounded-circle mr-3' style='width:85px; height:85px;' alt='" + response.name + "' src='" + response.profile_pic + "'>");
+                    // }
                 }
             }
         });

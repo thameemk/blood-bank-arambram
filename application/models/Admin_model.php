@@ -38,9 +38,9 @@ class Admin_model extends CI_Model
 
     function get_all_donations()
     {
-        $this->db->select('u.name,u.email,r.report_id,r.donated_date,r.donated_place,r.is_verified,r.verified_admin');
+        $this->db->select('u.user_name,u.user_email,r.report_id,r.donated_date,r.donated_place,r.is_verified,r.added_by,u.user_phone');
         $this->db->from('users as u, report as r');
-        $this->db->where('u.user_id = r.user_id');
+        $this->db->where('u.id = r.user_id');
         $query = $this->db->get();
         return $query->result_array();
     }
