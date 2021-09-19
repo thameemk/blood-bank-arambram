@@ -17,7 +17,7 @@
                                     <select class="form-control" name="user_id" required>
                                         <option value="">Select donor</option>
                                         <?php foreach ($allDonors as $row) { ?>
-                                            <option value="<?=$row['user_id']?>"><?=$row['user_id']?> - <?=$row['name']?></option>
+                                            <option value="<?=$row['id']?>"><?=$row['id']?> - <?=$row['user_name']?> -  <?=$row['user_phone']?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

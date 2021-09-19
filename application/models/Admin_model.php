@@ -113,6 +113,19 @@ class Admin_model extends CI_Model
         return $response;
     }
 
+    function check_duplicate_same_day_donation($user_id, $date)
+    {
+        $this->db->where('user_id', $user_id);
+        $this->db->where('donated_date', $date);
+        $query = $this->db->get('report');
+        $data = $query->result_array();
+        if ($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function report_user_blood_donation()
     {
         $data = $this->input->post();
@@ -129,9 +142,9 @@ class Admin_model extends CI_Model
                 'donated_date' => $this->input->post('donated_date'),
                 'donated_place' => $this->input->post('donated_place'),
                 'is_verified' => 1,
-                'verified_admin' => $this->session->email
+                'added_by' => $this->session->user_email
             );
-            if ($this->user_model->check_duplicate_same_day_donation($data['user_id'], $data['donated_date']) == TRUE) {
+            if ($this->check_duplicate_same_day_donation($data['user_id'], $data['donated_date']) == TRUE) {
                 $response['status'] = false;
                 $response['message'] = 'Duplicate Entry Found';
             } else {
@@ -147,6 +160,9 @@ class Admin_model extends CI_Model
         }
         return $response;
     }
+
+
+    
 
     function check_date($user_id)
     {
