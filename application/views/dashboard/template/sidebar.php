@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?=$this->session->user_name?> | <?= $page_title ?> - Blood donors Arambram </title>
+    <title><?php echo ucfirst($this->session->user_name)?> | <?= $page_title ?> - Blood donors Arambram </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="#">

@@ -68,8 +68,11 @@ class Admin_model extends CI_Model
     {
         $data = $this->input->post();
         $data = $this->security->xss_clean($data);
-        $this->form_validation->set_rules('phone', 'phone', 'required|is_unique[users.phone]');
-        $this->form_validation->set_rules('email', 'email', 'required|is_unique[users.email]');
+        $this->form_validation->set_rules('phone', 'phone', 'required|is_unique[users.user_phone]');
+        $this->form_validation->set_rules('phone_2', 'phone_2', 'is_unique[users.user_phone_2]');
+        $this->form_validation->set_rules('phone', 'phone', 'required|is_unique[users.user_phone_2]');
+        $this->form_validation->set_rules('phone_2', 'phone_2', 'is_unique[users.user_phone]');
+        $this->form_validation->set_rules('email', 'email', 'is_unique[users.email]');
         if ($this->form_validation->run() == FALSE) {
             $response['status'] = false;
             $response['message'] = 'Alredy Registred';
@@ -85,19 +88,17 @@ class Admin_model extends CI_Model
                 $response['message'] = 'Fill all requird fields';
             } else {
                 $user = array(
-                    'name' => $this->input->post('name'),
-                    'email' => $this->input->post('email'),
+                    'user_name' => $this->input->post('name'),
+                    'user_email' => $this->input->post('email'),
                     'gender' => $this->input->post('gender'),
                     'dob' => $this->input->post('dob'),
-                    'phone' => $this->input->post('phone'),
-                    'phone' => $this->input->post('phone'),
+                    'user_phone' => $this->input->post('phone'),
+                    'user_phone_2' => $this->input->post('phone_2'),
                     'blood_group' => $this->input->post('blood_group'),
-                    'pin_code' => $this->input->post('pin_code'),
-                    'home_address' => $this->input->post('home_address'),
-                    'is_profile_complete' => 1,
-                    'status' => 1,
-                    'is_verified' => 1,
-                    'verified_admin' => $this->session->email
+                    'pincode' => $this->input->post('pin_code'),
+                    'address' => $this->input->post('home_address'),
+                    'added_by' => $this->session->user_email,
+                    'password' => password_hash($this->input->post('phone'),PASSWORD_DEFAULT),
                 );
                 $this->db->insert('users', $user);
                 if ($this->db->affected_rows() == 1) {
