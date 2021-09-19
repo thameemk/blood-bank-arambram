@@ -98,7 +98,7 @@ class Admin_model extends CI_Model
                     'pincode' => $this->input->post('pin_code'),
                     'address' => $this->input->post('home_address'),
                     'added_by' => $this->session->user_email,
-                    'password' => password_hash($this->input->post('phone'),PASSWORD_DEFAULT),
+                    'password' => password_hash($this->input->post('phone'), PASSWORD_DEFAULT),
                 );
                 $this->db->insert('users', $user);
                 if ($this->db->affected_rows() == 1) {
@@ -188,5 +188,14 @@ class Admin_model extends CI_Model
         // }
         // exit;
         return $query->result_array();
+    }
+
+    function get_user_details($user_phone)
+    {
+        $this->db->select('user_name,user_email,gender,address,user_phone,user_phone_2,dob,blood_group,pincode,user_type');
+        $this->db->from('users');
+        $this->db->where('user_phone', $user_phone);
+        $query = $this->db->get();
+        return $query->row();
     }
 }

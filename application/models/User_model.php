@@ -186,14 +186,7 @@ class User_model extends CI_Model
         return $response;
     }
 
-    function get_user_details($email)
-    {
-        $this->db->select('name,email,gender,profile_pic,home_address,phone,phone_2,dob,blood_group,pin_code,user_type');
-        $this->db->from('users');
-        $this->db->where('email', $email);
-        $query = $this->db->get();
-        return $query->row();
-    }
+   
 
     function is_profile_verified()
     {
