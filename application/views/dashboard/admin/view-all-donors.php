@@ -13,42 +13,34 @@
                                 <th>Name</th>
                                 <th>Phone Number</th>
                                 <th>Blood Group</th>
-                                <th>Verify</th>
                                 <th>Availability</th>
                                 <th>View Details</th>
-
+                                <th>Registred Admin</th>
+                                <th>Type</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($allDonors as $row) { ?>
                                 <tr>
-                                    <td><?= $row['user_id'] ?></td>
-                                    <td><?= $row['name'] ?></td>
-                                    <td><a style="color: blue;" href="tel:<?= $row['phone'] ?>"><?= $row['phone'] ?></a></td>
+                                    <td><?= $row['id'] ?></td>
+                                    <td><?= $row['user_name'] ?></td>
+                                    <td><a style="color: blue;" href="tel:<?= $row['user_phone'] ?>"><?= $row['user_phone'] ?></a></td>
                                     <td><?= $row['blood_group'] ?></td>
                                     <td>
-                                        <?php if ($row['is_verified'] == 1) { ?>
-                                            <span class="btn btn-success">Verified by<br><?= $row['verified_admin'] ?></span>
-                                        <?php } elseif ($row['is_verified'] == 0) { ?>
-                                            <form method="post" action="<?= base_url() ?>Admin/verify_user">
-                                                <input type="hidden" name="email" value="<?= $row['email'] ?>">
-                                                <button type="submit" class="btn btn-warning">Verify</button>
-                                            </form>
-                                        <?php } ?>
-                                    </td>
-                                    <td>
                                         <form method="post" action="<?= base_url() ?>Admin/change_status">
-                                            <input type="hidden" name="email" value="<?= $row['email'] ?>">
-                                            <?php if ($row['status'] == 1) { ?>
+                                            <input type="hidden" name="donor_email" value="<?= $row['user_phone'] ?>">
+                                            <?php if ($row['is_available'] == 1) { ?>
                                                 <button type="submit" class="btn btn-success">Available</button>
-                                            <?php } elseif ($row['status'] == 0) { ?>
+                                            <?php } elseif ($row['is_available'] == 0) { ?>
                                                 <button type="submit" class="btn btn-danger">Not Available</button>
                                             <?php } ?>
                                         </form>
                                     </td>
                                     <td>
-                                        <button id="<?= $row['email'] ?>" onclick="getUserDetails(this);" data-toggle="modal" data-target="#scrollmodal" type="button" class="btn btn-primary">View</button>
+                                        <button id="<?= $row['user_phone'] ?>" onclick="getUserDetails(this);" data-toggle="modal" data-target="#scrollmodal" type="button" class="btn btn-primary">View</button>
                                     </td>
+                                    <td><?=$row['added_by']?></td>
+                                    <td><?=$row['user_type']?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

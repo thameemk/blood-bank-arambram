@@ -11,7 +11,7 @@ class Admin_model extends CI_Model
 
     function get_all_donors()
     {
-        $this->db->select('user_id,status,name,blood_group,phone,is_verified,email,verified_admin');
+        $this->db->select('id,user_name,blood_group,user_phone,user_email,added_by,is_available,user_type');
         $this->db->from('users');
         $query = $this->db->get();
         return $query->result_array();
