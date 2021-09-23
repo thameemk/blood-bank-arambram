@@ -175,34 +175,35 @@ class Admin_model extends CI_Model
         $last_donation = $this->db->get()->row();
         if ($last_donation != null) {
             $last_date = $last_donation->donated_date;
-            $diff = abs(strtotime($today) - strtotime($last_date));
-            $years = floor($diff / (365 * 60 * 60 * 24));
-            $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-            $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-            if ($days >= 90) {
-                return $last_donation;
+            $today = new DateTime($today);
+            $last_date = new DateTime($last_date);
+            $interval = $today->diff($last_date);
+            if ($interval->days >=90){
+                return true;
             }
-        } else {
-            $last_donation = array(
-                'user_id' => $user_id,
-                'donted_date' => null
-            );
-            return $last_donation;
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
         }
     }
 
     function get_all_active_donors()
     {
+        $active_donors = [];
         $this->db->select('id,user_name,blood_group,user_phone,user_email,user_phone_2');
         $this->db->from('users');
         $this->db->where('is_available', 1);
         $query = $this->db->get();
-        // foreach ($query->result() as $user) {
-        //     $status = $this->check_date($user->user_id);
-        //     echo json_encode($status);
-        // }
-        // exit;
-        return $query->result_array();
+        foreach ($query->result() as $user) {
+            $status = $this->check_date($user->id);
+            if ($status==true){
+                array_push($active_donors,$user);
+            }
+        }
+        return json_encode($active_donors);
     }
 
     function get_user_details($user_phone)
