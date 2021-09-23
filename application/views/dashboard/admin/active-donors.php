@@ -21,13 +21,13 @@
                         <tbody>
                             <?php foreach ($allActiveDonors as $row) { ?>
                                 <tr>
-                                    <td><?= $row['id'] ?></td>
-                                    <td><?= $row['user_name'] ?></td>
-                                    <td><a style="color: blue;" href="tel:<?= $row['user_phone'] ?>"><?= $row['user_phone'] ?></a></td>
-                                    <td><a style="color: blue;" href="tel:<?= $row['user_phone_2'] ?>"><?= $row['user_phone_2'] ?></a></td>
-                                    <td><?= $row['blood_group'] ?></td>
+                                    <td><?= $row->id ?></td>
+                                    <td><?= $row->user_name ?></td>
+                                    <td><a style="color: blue;" href="tel:<?= $row->user_phone ?>"><?= $row->user_phone ?></a></td>
+                                    <td><a style="color: blue;" href="tel:<?= $row->user_phone_2 ?>"><?= $row->user_phone_2 ?></a></td>
+                                    <td><?= $row->blood_group ?></td>
                                     <td>
-                                        <button id="<?= $row['user_phone'] ?>" onclick="getUserDetails(this);" data-toggle="modal" data-target="#scrollmodal" type="button" class="btn btn-primary">View</button>
+                                        <button id="<?= $row->user_phone ?>" onclick="getUserDetails(this);" data-toggle="modal" data-target="#scrollmodal" type="button" class="btn btn-primary">View</button>
                                     </td>
                                 </tr>
                             <?php } ?>
