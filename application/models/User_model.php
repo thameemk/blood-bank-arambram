@@ -153,28 +153,28 @@ class User_model extends CI_Model
         return $rowcount;
     }
 
-    function get_availability_status($email)
+    function get_availability_status($user_phone)
     {
-        $this->db->where('email', $email);
+        $this->db->where('user_phone', $user_phone);
         $query = $this->db->get('users');
         $data = $query->result_array();
-        $status = $data[0]['status'];
+        $status = $data[0]['is_available'];
         return $status;
     }
 
-    function update_availability($email)
+    function update_availability($user_phone)
     {
-        $current_status = $this->get_availability_status($email);
+        $current_status = $this->get_availability_status($user_phone);
         if ($current_status == 0) {
             $data = array(
-                'status' => 1
+                'is_available' => 1
             );
         } elseif ($current_status == 1) {
             $data = array(
-                'status' => 0
+                'is_available' => 0
             );
         }
-        $this->db->where('email', $email);
+        $this->db->where('user_phone', $user_phone);
         $this->db->update('users', $data);
         if ($this->db->affected_rows() == 1) {
             $response['status'] = true;

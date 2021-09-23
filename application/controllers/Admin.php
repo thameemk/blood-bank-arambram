@@ -46,8 +46,8 @@ class Admin extends CI_Controller
 
     function change_status()
     {
-        $email = $this->security->xss_clean($this->input->post('email'));
-        $response = $this->user_model->update_availability($email);
+        $user_phone = $this->security->xss_clean($this->input->post('user_phone'));
+        $response = $this->user_model->update_availability($user_phone);
         if ($response['status'] == true) {
             $this->session->set_flashdata('success', $response['message']);
         } else {

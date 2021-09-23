@@ -28,7 +28,7 @@
                                     <td><?= $row['blood_group'] ?></td>
                                     <td>
                                         <form method="post" action="<?= base_url() ?>Admin/change_status">
-                                            <input type="hidden" name="donor_email" value="<?= $row['user_phone'] ?>">
+                                            <input type="hidden" name="user_phone" value="<?= $row['user_phone'] ?>">
                                             <?php if ($row['is_available'] == 1) { ?>
                                                 <button type="submit" class="btn btn-success">Available</button>
                                             <?php } elseif ($row['is_available'] == 0) { ?>
