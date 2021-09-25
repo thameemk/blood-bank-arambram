@@ -21,3 +21,5 @@ application/config/development
 .venv/*
 
 demo/*
+
+.idea/*
