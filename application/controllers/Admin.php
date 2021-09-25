@@ -1,4 +1,13 @@
 <?php
+/*
+ * Author : thame
+ * License: The MIT License (MIT)
+ * Project : Blood Bank Arambram
+ * Filename : Admin.php
+ * Current modification time : Sat, 25 Sep 2021 at 7:36 PM India Standard Time
+ * Last modified time : Sat, 25 Sep 2021 at 7:09 PM India Standard Time
+ */
+
 class Admin extends CI_Controller
 {
 
@@ -27,6 +36,7 @@ class Admin extends CI_Controller
         $data['allDonors'] = $this->admin_model->get_all_donors();
         $data['allDonations'] = $this->admin_model->get_all_donations();
         $data['allActiveDonors'] = json_decode($this->admin_model->get_all_active_donors());
+        $data['profile'] = $this->user_model->get_user_profile($this->session->user_email);
         $this->load->view('dashboard/template/sidebar', $data);
         $this->load->view('dashboard/template/header', $data);
         $this->load->view('dashboard/admin/' . $page, $data);

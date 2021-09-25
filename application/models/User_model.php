@@ -1,4 +1,13 @@
 <?php
+/*
+ * Author : thame
+ * License: The MIT License (MIT)
+ * Project : Blood Bank Arambram
+ * Filename : User_model.php
+ * Current modification time : Sat, 25 Sep 2021 at 7:37 PM India Standard Time
+ * Last modified time : Sat, 25 Sep 2021 at 7:09 PM India Standard Time
+ */
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends CI_Model
@@ -138,7 +147,7 @@ class User_model extends CI_Model
 
     function get_all_blood_donations()
     {
-        $user_id = $this->get_user_id($this->session->email);
+        $user_id = $this->get_user_id($this->session->user_email);
         $this->db->where('user_id', $user_id);
         $query = $this->db->get('report');
         return $query->result();
@@ -146,7 +155,7 @@ class User_model extends CI_Model
 
     function get_total_blood_donations()
     {
-        $user_id = $this->get_user_id($this->session->email);
+        $user_id = $this->get_user_id($this->session->user_email);
         $this->db->where('user_id', $user_id);
         $query = $this->db->get('report');
         $rowcount = $query->num_rows();
@@ -195,5 +204,12 @@ class User_model extends CI_Model
         $data = $query->result_array();
         $status = $data[0]['is_verified'];
         return $status;
+    }
+
+    function  get_user_profile($email){
+        $email =  $this->security->xss_clean($email);
+        $this->db->where('user_email',$email);
+        $query = $this->db->get('users');
+        return $query->row();
     }
 }
